@@ -32,19 +32,21 @@ public class  ReadingFiles {
                 String rec = ""; //rec holds what the reader finds on the line
                 int words = 1;
                 int chars = 0;
+                int spaces = 0;
 
                 //Moving through selectedFilePath, reading, and printing each line of the selected selectedFilePath
                 while (reader.ready()) {
                     rec = reader.readLine();
                     line++;
                     for(char currentChar:rec.toCharArray()){
-                        if(currentChar==' '){words++;}
+                        if(currentChar==' '){spaces++;}
                         chars++;
                     }
                     System.out.printf("\nLine %d: %s ", line, rec); //Prints the line # and the contents of the line
                 }
                 reader.close(); // must close the selectedFilePath to seal it and clear buffer
-                int spaces = words-1; //idk why we need spaces AND words if they use the same counting method
+
+                words = line+spaces;
                 int charsWithoutSpaces = chars-spaces;
                 System.out.println("\n\nData read!"); //Success message
                 System.out.println("\nLINES: "+line+"\nWORDS: "+words+"\nSPACES: "+spaces+"\nCHARACTERS: "+chars+"\nCHARACTERS (excluding spaces): "+charsWithoutSpaces);
